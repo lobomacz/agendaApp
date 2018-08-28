@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contactos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/logo_cgraas.png" alt="">
+      </ion-avatar>
+      <h3>SEPLAN - GRACCS</h3>
+      <p>Mapeo de la inversión.</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p>{{ descripcion }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item *ngIf="listaInstituciones !== null">
+    <ion-label>
+      Institucion
+    </ion-label>
+    <ion-select [(ngModel)]="filtroInstit" >
+      <ion-option *ngFor="let institucion of listaInstituciones" value="{{ institucion.key }}">{{ institucion.payload.val().nombre_corto }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list *ngIf="contacto$ !== null && listaInstituciones !== null">
+    <ion-list-header>Funcionarios</ion-list-header>
+    <ion-item *ngFor="let contacto of contacto$ | async" (click)="DetalleContacto($event,contacto.key);">
+      <ion-avatar item-start>
+        <img src="{{ BuscaFoto(contacto.key, contacto.payload.val().foto) }}">
+      </ion-avatar>
+      <h2>{{ contacto.payload.val().nombre | uppercase}}</h2>
+      <h3>{{ BuscaInstitucion(contacto.payload.val().organizacion) }}</h3>
+      <p>{{ contacto.payload.val().cargo | uppercase }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

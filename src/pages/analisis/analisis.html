@@ -1,0 +1,86 @@
+<!--
+  Generated template for the AnalisisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar>
+  	<ion-title>Análisis</ion-title>
+	<ion-segment [(ngModel)]="grupo" (ionChange)="onSegment__Change($event)" color="primary" >
+		<ion-segment-button value="fuente">
+			Fuente
+		</ion-segment-button>
+		<ion-segment-button value="sector">
+			Sector
+		</ion-segment-button>
+		<ion-segment-button value="instit">
+			Institución
+		</ion-segment-button>
+	</ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card>
+		<ion-item>
+			<ion-avatar item-start>
+				<img src="assets/imgs/logo_cgraas.png" alt="">
+			</ion-avatar>
+			<h3>SEPLAN - GRACCS</h3>
+			<p>Mapeo de inversión.</p>
+		</ion-item>
+		<ion-card-content>
+			<p>{{ descripcion }}</p>
+		</ion-card-content>
+	</ion-card>
+	<div [ngSwitch]="grupo">
+		<div *ngSwitchCase="'fuente'" >
+			<div>
+				<canvas #chartFuente>{{ cPorFuente }}</canvas>
+			</div>
+		</div>
+		<div *ngSwitchCase="'sector'">
+			<div>
+				<canvas #chartSector>{{ cPorSector }}</canvas>
+			</div>
+		</div>
+		<div *ngSwitchCase="'instit'">
+			<ion-item>
+				<ion-label>
+					Sectores x Institución
+				</ion-label>
+				<ion-toggle [(ngModel)]="porIS" toggle-class="toggle-calm" (click)="CambiaDesc()" ></ion-toggle>
+			</ion-item>
+			<ion-item *ngIf="porIS === true">
+				<ion-label>
+					Institución
+				</ion-label>
+				<ion-select [(ngModel)]="filtroInstitucion">
+					<ion-option>
+						Yo
+					</ion-option>
+					<ion-option>
+						Otro
+					</ion-option>
+				</ion-select>
+			</ion-item>
+			<div *ngIf="porIS === false;else graficoIS">
+				<canvas #chartInstitucion>{{ cPorInstitucion }}</canvas>
+			</div>
+			<ng-template #graficoIS>
+				<canvas #chartIS>{{ cPorInstitucionSector }}</canvas>
+			</ng-template>
+		</div>
+	</div>
+	
+
+	
+	<ion-list>
+		<ion-item *ngFor="" ></ion-item>
+	</ion-list>
+
+</ion-content>
