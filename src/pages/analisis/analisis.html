@@ -8,79 +8,122 @@
 
   <ion-toolbar>
   	<ion-title>Análisis</ion-title>
-	<ion-segment [(ngModel)]="grupo" (ionChange)="onSegment__Change($event)" color="primary" >
-		<ion-segment-button value="fuente">
-			Fuente
-		</ion-segment-button>
-		<ion-segment-button value="sector">
-			Sector
-		</ion-segment-button>
-		<ion-segment-button value="instit">
-			Institución
-		</ion-segment-button>
-	</ion-segment>
+	<ion-buttons end>
+		<button ion-button icon-only (click)="On_ShowPopOver_Click()">
+			<ion-icon name="more"></ion-icon>
+		</button>
+	</ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-card>
-		<ion-item>
-			<ion-avatar item-start>
-				<img src="assets/imgs/logo_cgraas.png" alt="">
-			</ion-avatar>
-			<h3>SEPLAN - GRACCS</h3>
-			<p>Mapeo de inversión.</p>
-		</ion-item>
-		<ion-card-content>
-			<p>{{ descripcion }}</p>
-		</ion-card-content>
-	</ion-card>
-	<div [ngSwitch]="grupo">
-		<div *ngSwitchCase="'fuente'" >
-			<div>
-				<canvas #chartFuente>{{ cPorFuente }}</canvas>
-			</div>
-		</div>
-		<div *ngSwitchCase="'sector'">
-			<div>
-				<canvas #chartSector>{{ cPorSector }}</canvas>
-			</div>
-		</div>
-		<div *ngSwitchCase="'instit'">
+
+<ion-slides loop="true">
+	<ion-slide>
+		<ion-card>
 			<ion-item>
-				<ion-label>
-					Sectores x Institución
-				</ion-label>
-				<ion-toggle [(ngModel)]="porIS" toggle-class="toggle-calm" (click)="CambiaDesc()" ></ion-toggle>
+				<ion-avatar item-start>
+					<img src="assets/imgs/logo_cgraas.png" alt="">
+				</ion-avatar>
+				<h3>SEPLAN - GRACCS</h3>
+				<p>Mapeo de inversión.</p>
 			</ion-item>
-			<ion-item *ngIf="porIS === true">
+			<ion-card-content>
+				<p>Análisis por tipo de inversión.</p>
+			</ion-card-content>
+		</ion-card>
+		<div class="chart__container">
+			<canvas class="chart__canvas" #chartAlcaldias>{{ cConAlcaldias }}</canvas>
+		</div>
+	</ion-slide>
+
+	<ion-slide>
+		<ion-card>
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/imgs/logo_cgraas.png" alt="">
+				</ion-avatar>
+				<h3>SEPLAN - GRACCS</h3>
+				<p>Mapeo de inversión.</p>
+			</ion-item>
+			<ion-card-content>
+				<p>Análisis por fuente de financiamiento.</p>
+			</ion-card-content>
+		</ion-card>
+		<div class="chart__container">
+			<canvas class="chart__canvas" #chartFuente>{{ cPorFuente }}</canvas>
+		</div>
+	</ion-slide>
+
+	<ion-slide>
+		<ion-card>
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/imgs/logo_cgraas.png" alt="">
+				</ion-avatar>
+				<h3>SEPLAN - GRACCS</h3>
+				<p>Mapeo de inversión.</p>
+			</ion-item>
+			<ion-card-content>
+				<p>Análisis por Sector de Inversión.</p>
+			</ion-card-content>
+		</ion-card>
+		<div>
+			<canvas #chartSector>{{ cPorSector }}</canvas>
+		</div>
+	</ion-slide>
+
+	<ion-slide>
+		<div>
+			<ion-card>
+				<ion-item>
+					<ion-avatar item-start>
+						<img src="assets/imgs/logo_cgraas.png" alt="">
+					</ion-avatar>
+					<h3>SEPLAN - GRACCS</h3>
+					<p>Mapeo de inversión.</p>
+				</ion-item>
+				<ion-card-content>
+					<p>Análisis de la inversión por sector por institución.</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-item>
 				<ion-label>
 					Institución
 				</ion-label>
-				<ion-select [(ngModel)]="filtroInstitucion">
-					<ion-option>
-						Yo
-					</ion-option>
-					<ion-option>
-						Otro
+				<ion-select [(ngModel)]="filtroInstitucion" (ionChange)="SetFiltroInstitucion($event)" >
+					<ion-option value="{{ org.key }}" *ngFor="let org of organizacionesProyectos">
+						{{ org.payload.val().nombre_corto }}
 					</ion-option>
 				</ion-select>
 			</ion-item>
-			<div *ngIf="porIS === false;else graficoIS">
-				<canvas #chartInstitucion>{{ cPorInstitucion }}</canvas>
-			</div>
-			<ng-template #graficoIS>
+			<div>
 				<canvas #chartIS>{{ cPorInstitucionSector }}</canvas>
-			</ng-template>
+			</div>
 		</div>
-	</div>
-	
+		
+	</ion-slide>
 
-	
-	<ion-list>
-		<ion-item *ngFor="" ></ion-item>
-	</ion-list>
+	<ion-slide>
+		<ion-card>
+			<ion-item>
+				<ion-avatar item-start>
+					<img src="assets/imgs/logo_cgraas.png" alt="">
+				</ion-avatar>
+				<h3>SEPLAN - GRACCS</h3>
+				<p>Mapeo de inversión.</p>
+			</ion-item>
+			<ion-card-content>
+				<p>Análisis de la inversión por institución.</p>
+			</ion-card-content>
+		</ion-card>
+		<div>
+			<canvas #chartInstitucion>{{ cPorInstitucion }}</canvas>
+		</div>
+	</ion-slide>
+
+</ion-slides>
 
 </ion-content>

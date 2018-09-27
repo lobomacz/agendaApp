@@ -1,6 +1,6 @@
 {
-  "name": "agendaautonomia",
-  "app_id": "",
+  "name": "agendaraccs",
+  "app_id": "com.madmacz.agendaraccs",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

@@ -9,6 +9,7 @@ import { ReportesPage } from '../pages/reportes/reportes';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DetalleContactoPage } from '../pages/detalle-contacto/detalle-contacto';
+import { AnalisisPopoverPage } from '../pages/analisis-popover/analisis-popover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,6 +20,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AgendaAuthProvider } from '../providers/agenda-auth/agenda-auth';
 
 //Settings de AF2
 export const firebaseConfig = {
@@ -37,7 +39,8 @@ export const firebaseConfig = {
     ReportesPage,
     ContactPage,
     TabsPage,
-    DetalleContactoPage
+    DetalleContactoPage,
+    AnalisisPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -55,13 +58,15 @@ export const firebaseConfig = {
     ReportesPage,
     ContactPage,
     TabsPage,
-    DetalleContactoPage
+    DetalleContactoPage,
+    AnalisisPopoverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AgendaProvider
+    AgendaProvider,
+    AgendaAuthProvider
   ]
 })
 export class AppModule {}

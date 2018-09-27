@@ -72,5 +72,9 @@ export class AgendaProvider {
     return this._db.list('/sectoresDesarrollo').snapshotChanges();
   }
 
+  GetAlcaldias():Observable<AngularFireAction<DatabaseSnapshot<any>>[]>{
+    return this._db.list('/organizaciones/', ref => ref.orderByChild('tipo').equalTo('alcaldia')).snapshotChanges();
+  }
+
 
 }

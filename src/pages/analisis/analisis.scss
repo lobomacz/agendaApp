@@ -1,3 +1,14 @@
 page-analisis {
 
 }
+
+.chart {
+	&__container {
+		margin-top: 50px;
+		width: 100%;
+	}
+
+	&__canvas {
+		width: 100%;
+	}
+}

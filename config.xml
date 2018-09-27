@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>agendaautonomia</name>
-    <description>Aplicación para seguimiento del mapeo de la inversión en la Costa Caribe de Nicaragua</description>
+    <name>agendaraccs</name>
+    <description>Aplicación para seguimiento del mapeo de la inversión en la Costa Caribe Sur de Nicaragua</description>
     <author email="lobomacz@gmail.com" href="http://ionicframework.com/">Marvin Córdoba</author>
     <content src="index.html" />
     <access origin="*" />

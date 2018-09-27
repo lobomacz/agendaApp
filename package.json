@@ -1,8 +1,8 @@
 {
-  "name": "agendaautonomia",
+  "name": "agendaraccs",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Marvin Cordoba",
+  "homepage": "https://www.facebook.com/supersimio",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -48,7 +48,7 @@
     "@ionic/app-scripts": "3.1.11",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "Proyecto de Ionic para seguimiento de la inversion en la RACCS, Nicaragua.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
