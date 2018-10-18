@@ -23,10 +23,6 @@ export class AgendaProvider {
     
   }
 
-  GetAuthState():Observable<firebase.User>{
-  	return this._auth.authState;
-  }
-
   GetContactosPorInstitucion(contactoSubject:BehaviorSubject<string | null>):Observable<AngularFireAction<DatabaseSnapshot<any>>[]>{
   	//return contactoSubject.switchMap(instit => this._db.list('/contactos', ref => instit ? ref.orderByChild('organizacion').equalTo(instit):ref).snapshotChanges());
     let lista:Observable<AngularFireAction<DatabaseSnapshot<any>>[]>;

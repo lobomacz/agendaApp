@@ -1,8 +1,8 @@
 {
   "name": "agendaraccs",
-  "app_id": "com.madmacz.agendaraccs",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "com.madmacz.agendaraccs"
 }
